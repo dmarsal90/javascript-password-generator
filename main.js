@@ -6,7 +6,7 @@ const lowercaseEl = document.getElementById("lowercase");
 const numbersEl = document.getElementById("numbers");
 const symbolsEl = document.getElementById("symbols");
 const generateEl = document.getElementById("generate");
-const clipboardEl = document.getElementById("clipboard");
+const clipboard = document.getElementById("clipboard");
 
 const randomFunc = {
   lower: getRandomLower,
@@ -50,7 +50,7 @@ generate.addEventListener("click", () => {
 
 //Generate password function
 function generatePassword(lower, upper, number, symbol, length) {
-    /*
+  /*
     1- Init pw var
     2- Filter out unchecked types
     3- Loop ever length call generator function for each type
