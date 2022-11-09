@@ -15,6 +15,7 @@ const randomFunc = {
   symbol: getRandomSymbol,
 };
 
+//Generate even listen
 generate.addEventListener("click", () => {
   const length = +lengthEl.value;
   const hasLower = lowercaseEl.checked;
@@ -30,6 +31,32 @@ generate.addEventListener("click", () => {
     length
   );
 });
+
+//Generate password function
+function generatePassword(lower, upper, number, symbol, length) {
+  let generatedPassword = "";
+  const typesCount = lower + upper + number + symbol;
+  const typesArr = [{ lower }, { upper }, { number }, { symbol }].filter(
+    (item) => Object.values(item)[0]
+  );
+
+  // Doesn't have a selected type
+  if (typesCount === 0) {
+    return "";
+  }
+
+  // create a loop
+  for (let i = 0; i < length; i += typesCount) {
+    typesArr.forEach((type) => {
+      const funcName = Object.keys(type)[0];
+      generatedPassword += randomFunc[funcName]();
+    });
+  }
+
+  const finalPassword = generatedPassword.slice(0, length);
+
+  return finalPassword;
+}
 
 // GEnerator functions - https://www.net-comber.com/charset.html
 
